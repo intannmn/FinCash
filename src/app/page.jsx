@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
@@ -27,9 +28,9 @@ export default function Login() {
 
   return (
     <main className="flex h-screen w-screen items-center justify-center text-white bg-myDarkPurple">
-      <div className="space-y-5 p-5">
+      <div className="space-y-5 p-5 w-[400px]">
         {/* TITLE */}
-        <p className="text-3xl text-center font-bold">-- FinCash --</p>
+        <p className="text-3xl text-center font-bold">-- FinCash Login --</p>
         {/* TITLE */}
 
         <form onSubmit={authentication} className="space-y-5 w-full mx-auto">
@@ -63,7 +64,7 @@ export default function Login() {
 
           {/* INDICATOR */}
           <p className="text-center text-lg text-red-500">
-            {invalid && "Invalid Username or Password"}
+            {invalid && "Invalid Username Or Password"}
           </p>
           {/* INDICATOR */}
 
@@ -77,10 +78,15 @@ export default function Login() {
           {/* LOGIN BUTTON */}
         </form>
 
+        <Link
+          href={"/register"}
+          className="hover:text-myPurple text-sm w-fit block mx-auto text-center"
+        >
+          Don&apos;t have an account yet?
+        </Link>
+
         {/* COPYRIGHT */}
-        <p className="text-center text-gray-400">
-          © 2023 Intan Meilanie Nugraha. All rights reserved.
-        </p>
+        <p className="text-center text-gray-400">© 2023 FinCash. All rights reserved.</p>
         {/* END COPYRIGHT */}
       </div>
     </main>
