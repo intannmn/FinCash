@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Login() {
@@ -27,16 +28,19 @@ export default function Login() {
   };
 
   return (
-    <main className="flex h-screen w-screen items-center justify-center text-white bg-myDarkPurple">
-      <div className="space-y-5 p-5 w-[400px]">
-        {/* TITLE */}
-        <p className="text-3xl text-center font-bold">-- FinCash Login --</p>
-        {/* TITLE */}
+    <main className="flex h-screen w-screen items-center justify-center bg-gradient-to-b from-myGreenA/80 to-white/50">
+      <div className="bg-dots-background bg-no-repeat bg-fixed bg-cover -z-10 fixed w-full h-full" />
+      <div className="space-y-5 p-5 w-[400px] bg-myGreenA/50 rounded-lg border-2 border-black">
+        {/* LOGO */}
+        <Image src={require("@/assets/logo/FinCash.svg")} alt="FinCash" className="mx-auto" />
+        {/* LOGO */}
 
         <form onSubmit={authentication} className="space-y-5 w-full mx-auto">
           {/* INPUT USERNAME */}
-          <fieldset className="border-2 group/username focus-within:border-myPurple rounded-md px-3 pb-2 w-full">
-            <legend className="group-focus-within/username:text-myPurple px-2">Username</legend>
+          <fieldset className="border-2 border-black group/username focus-within:border-myGreenD rounded-md px-3 pb-2 w-full">
+            <legend className="group-focus-within/username:text-myGreenD px-2 font-semibold">
+              Username
+            </legend>
             <input
               type="text"
               id="username"
@@ -49,8 +53,10 @@ export default function Login() {
           {/* INPUT USERNAME */}
 
           {/* INPUT PASSWORD */}
-          <fieldset className="border-2 group/password focus-within:border-myPurple rounded-md px-3 pb-2 w-full">
-            <legend className="group-focus-within/password:text-myPurple px-2">Password</legend>
+          <fieldset className="border-2 border-black group/password focus-within:border-myGreenD rounded-md px-3 pb-2 w-full">
+            <legend className="group-focus-within/password:text-myGreenD px-2 font-semibold">
+              Password
+            </legend>
             <input
               type="password"
               id="password"
@@ -71,7 +77,7 @@ export default function Login() {
           {/* LOGIN BUTTON */}
           <button
             type="submit"
-            className="h-11 w-full rounded-md bg-myPurple font-bold hover:bg-myPurpleSec"
+            className="h-11 w-full rounded-md bg-myGreenD/70 font-bold hover:bg-myGreenD/80"
           >
             LOGIN
           </button>
@@ -80,13 +86,13 @@ export default function Login() {
 
         <Link
           href={"/register"}
-          className="hover:text-myPurple text-sm w-fit block mx-auto text-center"
+          className="hover:text-blue-600 text-sm w-fit block mx-auto text-center"
         >
           Don&apos;t have an account yet?
         </Link>
 
         {/* COPYRIGHT */}
-        <p className="text-center text-gray-400">© 2023 FinCash. All rights reserved.</p>
+        <p className="text-center">© 2023 FinCash. All rights reserved.</p>
         {/* END COPYRIGHT */}
       </div>
     </main>
