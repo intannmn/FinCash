@@ -1,31 +1,51 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+
+// IMPORT LIBRARIES
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { useEffect, useState } from "react";
 
 export default function Login() {
+  const session = useSession();
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [invalid, setInvalid] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const authentication = (e) => {
+  // HANDLE SUBMIT
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const res = [{ username: "admin", password: "admin" }];
-      const account = res.find((user) => user.username === username && user.password === password);
-      if (account) {
-        router.push("/dashboard");
-      } else {
+      const res = await signIn(`credentials`, {
+        username,
+        password,
+        redirect: false,
+      });
+
+      if (res?.error) {
         setInvalid(true);
-        setPassword("");
+        setLoading(false);
+        return;
       }
     } catch (error) {
-      console.error("Error:", error);
-      throw error;
+      console.log(error);
     }
   };
+
+  // CHECK STATUS & REDIRECT
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      setLoading(true);
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 1000);
+    }
+  }, [session, router]);
 
   return (
     <main className="flex h-screen w-screen items-center justify-center bg-gradient-to-b from-myGreenA/80 to-white/50">
@@ -35,7 +55,7 @@ export default function Login() {
         <Image src={require("@/assets/logo/FinCash.svg")} alt="FinCash" className="mx-auto" />
         {/* LOGO */}
 
-        <form onSubmit={authentication} className="space-y-5 w-full mx-auto">
+        <form onSubmit={handleSubmit} className="space-y-5 w-full mx-auto">
           {/* INPUT USERNAME */}
           <fieldset className="border-2 border-black group/username focus-within:border-myGreenD rounded-md px-3 pb-2 w-full">
             <legend className="group-focus-within/username:text-myGreenD px-2 font-semibold">
@@ -77,9 +97,20 @@ export default function Login() {
           {/* LOGIN BUTTON */}
           <button
             type="submit"
-            className="h-11 w-full rounded-md bg-myGreenD/70 font-bold hover:bg-myGreenD/80"
+            disabled={loading}
+            className="h-11 w-full flex items-center justify-center gap-1 rounded-md bg-myGreenD/70 font-bold hover:bg-myGreenD/80"
           >
-            LOGIN
+            <span>LOGIN</span>
+            {loading && (
+              <Image
+                src={require("@/assets/loading/Loading-Black.svg")}
+                alt="Loading"
+                width={20}
+                height={0}
+                loading="eager"
+                className="stroke-black"
+              />
+            )}
           </button>
           {/* LOGIN BUTTON */}
         </form>
