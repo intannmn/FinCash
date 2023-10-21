@@ -5,8 +5,11 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 import { useEffect, useState } from "react";
+
+// IMPORT COMPONENTS
+import InputPassword from "@/components/inputs/InputPassword";
+import InputText from "@/components/inputs/InputText";
 
 export default function Login() {
   const session = useSession();
@@ -52,53 +55,40 @@ export default function Login() {
       <div className="bg-dots-background bg-no-repeat bg-fixed bg-cover -z-10 fixed w-full h-full" />
       <div className="space-y-5 p-5 w-[400px] bg-myGreenA/50 rounded-lg border-2 border-black">
         {/* LOGO */}
-        <Image src={require("@/assets/logo/FinCash.svg")} alt="FinCash" className="mx-auto" />
-        {/* LOGO */}
+        <Image
+          src={require("@/assets/logo/FinCash.svg")}
+          alt="FinCash"
+          quality={50}
+          className="mx-auto"
+        />
 
         <form onSubmit={handleSubmit} className="space-y-5 w-full mx-auto">
           {/* INPUT USERNAME */}
-          <fieldset className="border-2 border-black group/username focus-within:border-myGreenD rounded-md px-3 pb-2 w-full">
-            <legend className="group-focus-within/username:text-myGreenD px-2 font-semibold">
-              Username
-            </legend>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="bg-transparent outline-none w-full"
-            />
-          </fieldset>
-          {/* INPUT USERNAME */}
+          <InputText
+            label="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
           {/* INPUT PASSWORD */}
-          <fieldset className="border-2 border-black group/password focus-within:border-myGreenD rounded-md px-3 pb-2 w-full">
-            <legend className="group-focus-within/password:text-myGreenD px-2 font-semibold">
-              Password
-            </legend>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="bg-transparent outline-none w-full"
-            />
-          </fieldset>
-          {/* INPUT PASSWORD */}
+          <InputPassword
+            label="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-          {/* INDICATOR */}
+          {/* INVALID */}
           <p className="text-center text-lg text-red-500">
             {invalid && "Invalid Username Or Password"}
           </p>
-          {/* INDICATOR */}
 
           {/* LOGIN BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="h-11 w-full flex items-center justify-center gap-1 rounded-md bg-myGreenD/70 font-bold hover:bg-myGreenD/80"
+            className={`h-11 w-full flex items-center justify-center gap-1 rounded-md font-bold ${
+              loading ? "bg-myGreenD/60 cursor-wait" : "bg-myGreenD/70 hover:bg-myGreenD/80"
+            }`}
           >
             <span>LOGIN</span>
             {loading && (
@@ -107,12 +97,12 @@ export default function Login() {
                 alt="Loading"
                 width={20}
                 height={0}
+                quality={50}
                 loading="eager"
                 className="stroke-black"
               />
             )}
           </button>
-          {/* LOGIN BUTTON */}
         </form>
 
         <Link
@@ -124,7 +114,6 @@ export default function Login() {
 
         {/* COPYRIGHT */}
         <p className="text-center">© 2023 FinCash. All rights reserved.</p>
-        {/* END COPYRIGHT */}
       </div>
     </main>
   );
