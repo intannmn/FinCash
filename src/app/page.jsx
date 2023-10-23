@@ -1,5 +1,6 @@
 import Header from "@/components/landingpage/Header";
 import Main from "@/components/landingpage/Main";
+import Footer from "@/components/landingpage/Footer";
 
 export default function LandingPage() {
   return (
@@ -8,6 +9,7 @@ export default function LandingPage() {
       <div className="fixed -z-[11] h-screen w-screen bg-dots-background bg-cover bg-fixed bg-no-repeat" />
       <Header />
       <Main />
+      <Footer />
     </>
   );
 }
