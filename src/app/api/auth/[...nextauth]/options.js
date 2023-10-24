@@ -9,7 +9,9 @@ export const options = {
         const { username, password } = credentials;
         try {
           // const res = await fetch("https://650c816247af3fd22f67b58e.mockapi.io/Account");
-          const res = [{ username: "admin", password: "admin" }];
+          const res = [
+            { username: "admin", password: "admin", email: "intanmn@gmail.com", name: "Intan Meilanie Nugraha", image: "/assets/user.png" },
+          ];
           const user = res.find((item) => item.username === username && item.password === password);
           if (user) {
             return user;
