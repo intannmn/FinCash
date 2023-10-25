@@ -30,6 +30,8 @@ export const options = {
       return baseUrl;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
+  session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
   },
