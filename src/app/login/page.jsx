@@ -52,42 +52,27 @@ export default function Login() {
 
   return (
     <main className="flex h-screen w-screen items-center justify-center bg-gradient-to-b from-myGreenA/80 to-white/50">
-      <div className="bg-dots-background bg-no-repeat bg-fixed bg-cover -z-10 fixed w-full h-full" />
-      <div className="space-y-5 p-5 w-[400px] bg-myGreenA/50 rounded-lg border-2 border-black">
+      <div className="fixed -z-10 h-full w-full bg-dots-background bg-cover bg-fixed bg-no-repeat" />
+      <div className="w-[400px] space-y-5 rounded-lg border-2 border-black bg-myGreenA/50 p-5">
         {/* LOGO */}
-        <Image
-          src={require("@/assets/logo/FinCash.svg")}
-          alt="FinCash"
-          quality={50}
-          className="mx-auto"
-        />
+        <Image src={require("@/assets/logo/FinCash.svg")} alt="FinCash" quality={50} className="mx-auto" />
 
-        <form onSubmit={handleSubmit} className="space-y-5 w-full mx-auto">
+        <form onSubmit={handleSubmit} className="mx-auto w-full space-y-5">
           {/* INPUT USERNAME */}
-          <InputText
-            label="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <InputText label="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
 
           {/* INPUT PASSWORD */}
-          <InputPassword
-            label="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <InputPassword label="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
           {/* INVALID */}
-          <p className="text-center text-lg text-red-500">
-            {invalid && "Invalid Username Or Password"}
-          </p>
+          <p className="text-center text-lg text-red-500">{invalid && "Invalid Username Or Password"}</p>
 
           {/* LOGIN BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className={`h-11 w-full flex items-center justify-center gap-1 rounded-md font-bold ${
-              loading ? "bg-myGreenD/60 cursor-wait" : "bg-myGreenD/70 hover:bg-myGreenD/80"
+            className={`flex h-11 w-full items-center justify-center gap-1 rounded-md font-bold ${
+              loading ? "cursor-wait bg-myGreenD/60" : "bg-myGreenD/70 hover:bg-myGreenD/80"
             }`}
           >
             <span>LOGIN</span>
@@ -105,11 +90,8 @@ export default function Login() {
           </button>
         </form>
 
-        <Link
-          href={"/register"}
-          className="hover:text-blue-600 text-sm w-fit block mx-auto text-center"
-        >
-          Don&apos;t have an account yet?
+        <Link href={"/register"} className="mx-auto block w-fit text-center text-sm hover:text-blue-600">
+          Don&apos;t have an account yet? Click here!
         </Link>
 
         {/* COPYRIGHT */}
