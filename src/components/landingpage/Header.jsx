@@ -9,7 +9,7 @@ export default function Header() {
         <div className="w-20">
           <Image src={FinCash} alt="FinCash" height={35} width={25} />
         </div>
-        <ul className="flex items-center justify-start gap-8">
+        <ul className="flex items-center justify-start gap-8 text-lg">
           <li className="font-semibold hover:text-myGreenD">
             <a href="#Home">Home</a>
           </li>
