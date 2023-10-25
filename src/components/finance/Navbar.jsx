@@ -25,11 +25,11 @@ export default function Navbar() {
           <Link href="/dashboard" className={`flex items-center gap-2 ${pathname === "/dashboard" ? "text-myGreenC" : "hover:text-myGreenC"}`}>
             <RiDashboardFill size={20} /> Dashboard
           </Link>
-          <Link href="/expence" className={`flex items-center gap-2 ${pathname === "/expence" ? "text-myGreenC" : "hover:text-myGreenC"}`}>
-            <GiPayMoney size={20} /> Expense
-          </Link>
           <Link href="/income" className={`flex items-center gap-2 ${pathname === "/income" ? "text-myGreenC" : "hover:text-myGreenC"}`}>
             <GiReceiveMoney size={20} /> Income
+          </Link>
+          <Link href="/expense" className={`flex items-center gap-2 ${pathname === "/expense" ? "text-myGreenC" : "hover:text-myGreenC"}`}>
+            <GiPayMoney size={20} /> Expense
           </Link>
           <Link href="/report" className={`flex items-center gap-2 ${pathname === "/report" ? "text-myGreenC" : "hover:text-myGreenC"}`}>
             <FaMoneyBillTransfer size={20} /> Report
