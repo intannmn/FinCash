@@ -2,8 +2,7 @@ import Image from "next/image";
 import FinCash from "@/assets/logo/FinCash.svg";
 import Logo from "@/assets/logo/Logo.svg";
 
-import InputText from "@/components/inputs/InputText";
-import TextArea from "@/components/inputs/TextArea";
+import Form from "./form/Form";
 
 export default function Main() {
   return (
@@ -41,21 +40,10 @@ export default function Main() {
               CONTA<span className="text-myGreenC">CT</span>
               <div className="mx-auto h-0.5 w-20 rounded-full bg-black" />
             </h2>
-            <form className="mt-2 space-y-3">
-              <InputText label="Name" value={""} />
-              <InputText label="Phone Number" value={""} />
-              <InputText label="Email" value={""} />
-              <TextArea label="Message" value={""} />
-              <button
-                type="submit"
-                className="flex h-8 w-20 items-center justify-center border-2 border-myGreenD font-semibold text-myGreenD hover:bg-myGreenD hover:text-white"
-              >
-                Send
-              </button>
-            </form>
+            <Form />
           </div>
 
-          <div className="flex flex-col items-center justify-center font-bold">
+          <div className="flex flex-col items-center justify-center text-center font-bold">
             <p>123 Main Street London, W1A, United Kingdom</p>
             <p>info@fincash.com</p>
             <p>+91 8865230</p>
