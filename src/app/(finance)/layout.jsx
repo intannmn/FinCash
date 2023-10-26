@@ -8,7 +8,7 @@ export default function FinanceLayout({ children }) {
       <div className="fixed left-0 top-0 -z-[11] h-screen w-screen bg-dots-background bg-cover bg-fixed bg-no-repeat" />
       <Header />
       <Navbar />
-      <div className="ml-72 mt-28">{children}</div>
+      <div className="ml-[296px] mr-5 mt-28">{children}</div>
     </>
   );
 }
