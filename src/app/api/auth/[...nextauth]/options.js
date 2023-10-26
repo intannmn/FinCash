@@ -27,6 +27,14 @@ export const options = {
     async redirect({ baseUrl }) {
       return baseUrl;
     },
+    async jwt({ token, user }) {
+      if (user) token.id = user.id;
+      return token;
+    },
+    async session({ session, token }) {
+      if (session?.user) session.user.id = token.id;
+      return session;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
