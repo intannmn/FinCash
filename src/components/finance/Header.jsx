@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { AiFillSetting } from "react-icons/ai";
+import Link from "next/link";
 
 export default function Header() {
   const session = useSession();
@@ -22,9 +23,9 @@ export default function Header() {
             </p>
           </div>
         </section>
-        <section className="cursor-pointer hover:text-myGreenC">
+        <Link href={"/account"} className="hover:text-myGreenC">
           <AiFillSetting size={25} />
-        </section>
+        </Link>
       </div>
     </header>
   );
