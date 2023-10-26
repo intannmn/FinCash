@@ -12,7 +12,6 @@ import { RiDashboardFill, RiShutDownLine } from "react-icons/ri";
 
 export default function Navbar() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav className="fixed left-0 top-0 h-full px-5 pb-5 pt-28">
       <div className="flex h-full w-64 flex-col items-center rounded-2xl border-2 border-black bg-white">
