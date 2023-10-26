@@ -8,11 +8,9 @@ export const options = {
       async authorize(credentials) {
         const { username, password } = credentials;
         try {
-          // const res = await fetch("https://650c816247af3fd22f67b58e.mockapi.io/Account");
-          const res = [
-            { username: "admin", password: "admin", email: "intanmn@gmail.com", name: "Intan Meilanie Nugraha", image: "/assets/user.png" },
-          ];
-          const user = res.find((item) => item.username === username && item.password === password);
+          const res = await fetch("https://653a4cfee3b530c8d9e975ac.mockapi.io/account");
+          const data = await res.json();
+          const user = data.find((item) => item.username === username && item.password === password);
           if (user) {
             return user;
           } else {
