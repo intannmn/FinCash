@@ -124,7 +124,7 @@ export default function Main() {
       </form>
 
       <div className="rounded-md border-2 border-black">
-        <table className="w-full border-collapse divide-y-2 divide-black rounded-md">
+        <table className="w-full divide-y-2 divide-black">
           <thead>
             <tr className="divide-x-2 divide-black font-bold">
               <th className="p-3">NO</th>
@@ -140,7 +140,7 @@ export default function Main() {
               <tr key={expense.id} className="divide-x-2 divide-black text-center">
                 <td className="p-3">{index + 1}</td>
                 <td className="p-3">{expense.date}</td>
-                <td className="p-3">{expense.rp}</td>
+                <td className="p-3">Rp {expense.rp}</td>
                 <td className="p-3">{expense.category}</td>
                 <td className="p-3">{expense.note}</td>
                 <td className="p-3">
