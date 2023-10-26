@@ -48,6 +48,8 @@ export default function Register() {
         const account = {
           username,
           password,
+          email: username,
+          image: "/assets/user.png",
         };
         try {
           await createAccount(account);
