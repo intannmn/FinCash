@@ -3,20 +3,26 @@
 import { useState } from "react";
 import InputText from "@/components/inputs/InputText";
 import TextArea from "@/components/inputs/TextArea";
+import SubmitButtonLine from "@/components/buttons/SubmitButtonLine";
 
-export default function Form() {
+export default function ContactForm() {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Name: ${name}\nPhone Number: ${phoneNumber}\nEmail: ${email}\nMessage: ${message}`);
-    setName("");
-    setPhoneNumber("");
-    setEmail("");
-    setMessage("");
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      alert(`Name: ${name}\nPhone Number: ${phoneNumber}\nEmail: ${email}\nMessage: ${message}`);
+      setName("");
+      setPhoneNumber("");
+      setEmail("");
+      setMessage("");
+    }, 1000);
   };
   return (
     <form className="mt-2 space-y-3" onSubmit={handleSubmit}>
@@ -48,12 +54,7 @@ export default function Form() {
           setMessage(e.target.value);
         }}
       />
-      <button
-        type="submit"
-        className="flex h-8 w-20 items-center justify-center border-2 border-myGreenD font-semibold text-myGreenD hover:bg-myGreenD hover:text-white"
-      >
-        Send
-      </button>
+      <SubmitButtonLine label={"Send"} font={"semibold"} size={"sm"} loading={loading} />
     </form>
   );
 }

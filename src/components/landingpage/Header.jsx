@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import FinCash from "@/assets/logo/Logo.svg";
+import LinkButtonLine from "../buttons/LinkButtonLine";
 
 export default function Header() {
   return (
@@ -20,12 +20,7 @@ export default function Header() {
             <a href="#Contact">Contact</a>
           </li>
         </ul>
-        <Link
-          href={"/login"}
-          className="flex h-8 w-20 items-center justify-center border-2 border-myGreenD font-semibold text-myGreenD hover:bg-myGreenD hover:text-white"
-        >
-          Login
-        </Link>
+        <LinkButtonLine label={"Login"} href={"/login"} font={"semibold"} size={"sm"} />
       </nav>
     </header>
   );

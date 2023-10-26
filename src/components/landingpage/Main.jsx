@@ -1,14 +1,12 @@
 import Image from "next/image";
 import FinCash from "@/assets/logo/FinCash.svg";
 import Logo from "@/assets/logo/Logo.svg";
-
-import Form from "./form/Form";
+import ContactForm from "./contactForm/ContactForm";
 
 export default function Main() {
   return (
     <main>
       <section className="flex h-[500px] w-full flex-col items-center justify-center">
-        {/* TODO Jangan lupa benerin logo nya  dan perbaiki Height nya */}
         <Image src={FinCash} alt="FinCash" height={90.61} width={400} />
         <h1 className="text-xl font-bold">Personal Finance Solution</h1>
       </section>
@@ -40,7 +38,7 @@ export default function Main() {
               CONTA<span className="text-myGreenC">CT</span>
               <div className="mx-auto h-0.5 w-20 rounded-full bg-black" />
             </h2>
-            <Form />
+            <ContactForm />
           </div>
 
           <div className="flex flex-col items-center justify-center text-center font-bold">
