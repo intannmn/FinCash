@@ -48,6 +48,7 @@ export default function Register() {
         const account = {
           username,
           password,
+          name: username,
           email: username,
           image: "/assets/user.png",
         };
