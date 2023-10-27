@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
+import Button from "@/components/buttons/Button";
 
 export default function Main() {
   const [incomes, setIncomes] = useState([]);
@@ -52,6 +53,15 @@ export default function Main() {
     XLSX.writeFile(wb, "Fincash_Report.xlsx");
   };
 
+  const formatToRupiah = (angka) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(angka);
+  };
+
   return (
     <main className="space-y-5">
       <section id="totalTable">
@@ -66,70 +76,70 @@ export default function Main() {
             </thead>
             <tbody>
               <tr className="divide-x-2 divide-black text-center">
-                <td className="p-3">Rp {totalIncome}</td>
-                <td className="p-3">Rp {totalExpense}</td>
-                <td className="p-3">Rp {balance}</td>
+                <td className="p-3">{formatToRupiah(totalIncome)}</td>
+                <td className="p-3">{formatToRupiah(totalExpense)}</td>
+                <td className="p-3">{formatToRupiah(balance)}</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <button type="button" onClick={handleExcelExport}>
-          Excel
-        </button>
       </section>
 
-      <section className="flex items-center justify-center">
-        <div id="incomeTable" className="grid w-full grid-cols-2 gap-5">
-          <div className="rounded-md border-2 border-black">
-            <table className="w-full divide-y-2 divide-black">
-              <thead>
-                <tr className="divide-x-2 divide-black font-bold">
-                  <th className="p-3">NO</th>
-                  <th className="p-3">DATE</th>
-                  <th className="p-3">RP</th>
-                  <th className="p-3">CATEGORY</th>
-                  <th className="p-3">NOTE</th>
-                </tr>
-              </thead>
-              <tbody>
-                {incomes.map((income, index) => (
-                  <tr key={income.id} className="divide-x-2 divide-black text-center">
-                    <td className="p-3">{index + 1}</td>
-                    <td className="p-3">{income.date}</td>
-                    <td className="p-3">Rp {income.rp}</td>
-                    <td className="p-3">{income.category}</td>
-                    <td className="p-3">{income.note}</td>
+      <section className="space-y-5">
+        <div className="flex items-center justify-center">
+          <div id="incomeTable" className="grid w-full grid-cols-2 gap-5">
+            <div className="rounded-md border-2 border-black">
+              <table className="w-full divide-y-2 divide-black">
+                <thead>
+                  <tr className="divide-x-2 divide-black font-bold">
+                    <th className="p-3">NO</th>
+                    <th className="p-3">DATE</th>
+                    <th className="p-3">RP</th>
+                    <th className="p-3">CATEGORY</th>
+                    <th className="p-3">NOTE</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {incomes.map((income, index) => (
+                    <tr key={income.id} className="divide-x-2 divide-black text-center">
+                      <td className="p-3">{index + 1}</td>
+                      <td className="p-3">{income.date}</td>
+                      <td className="p-3">{formatToRupiah(income.rp)}</td>
+                      <td className="p-3">{income.category}</td>
+                      <td className="p-3">{income.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-          <div id="expenseTable" className="rounded-md border-2 border-black">
-            <table className="w-full border-collapse divide-y-2 divide-black">
-              <thead>
-                <tr className="divide-x-2 divide-black font-bold">
-                  <th className="p-3">NO</th>
-                  <th className="p-3">DATE</th>
-                  <th className="p-3">RP</th>
-                  <th className="p-3">CATEGORY</th>
-                  <th className="p-3">NOTE</th>
-                </tr>
-              </thead>
-              <tbody>
-                {expenses.map((expense, index) => (
-                  <tr key={expense.id} className="divide-x-2 divide-black text-center">
-                    <td className="p-3">{index + 1}</td>
-                    <td className="p-3">{expense.date}</td>
-                    <td className="p-3">Rp {expense.rp}</td>
-                    <td className="p-3">{expense.category}</td>
-                    <td className="p-3">{expense.note}</td>
+            <div id="expenseTable" className="rounded-md border-2 border-black">
+              <table className="w-full border-collapse divide-y-2 divide-black">
+                <thead>
+                  <tr className="divide-x-2 divide-black font-bold">
+                    <th className="p-3">NO</th>
+                    <th className="p-3">DATE</th>
+                    <th className="p-3">RP</th>
+                    <th className="p-3">CATEGORY</th>
+                    <th className="p-3">NOTE</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {expenses.map((expense, index) => (
+                    <tr key={expense.id} className="divide-x-2 divide-black text-center">
+                      <td className="p-3">{index + 1}</td>
+                      <td className="p-3">{expense.date}</td>
+                      <td className="p-3">{formatToRupiah(expense.rp)}</td>
+                      <td className="p-3">{expense.category}</td>
+                      <td className="p-3">{expense.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+        <Button label={"Excel"} font={"semibold"} size={"md-full"} onClick={handleExcelExport} />
       </section>
     </main>
   );
