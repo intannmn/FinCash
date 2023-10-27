@@ -108,6 +108,15 @@ export default function Main() {
       });
   };
 
+  const formatToRupiah = (angka) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(angka);
+  };
+
   return (
     <main className="space-y-5">
       <form onSubmit={addExpense} className="space-y-3">
@@ -140,7 +149,7 @@ export default function Main() {
               <tr key={expense.id} className="divide-x-2 divide-black text-center">
                 <td className="p-3">{index + 1}</td>
                 <td className="p-3">{expense.date}</td>
-                <td className="p-3">Rp {expense.rp}</td>
+                <td className="p-3">{formatToRupiah(expense.rp)}</td>
                 <td className="p-3">{expense.category}</td>
                 <td className="p-3">{expense.note}</td>
                 <td className="p-3">
