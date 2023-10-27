@@ -108,6 +108,15 @@ export default function Main() {
       });
   };
 
+  const formatToRupiah = (angka) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(angka);
+  };
+
   return (
     <main className="space-y-5">
       <form onSubmit={addIncome} className="space-y-3">
@@ -116,7 +125,7 @@ export default function Main() {
         <Select label="Category" value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="Salary">Salary</option>
           <option value="Bonus">Bonus</option>
-          <option value="Investment">Investment</option>
+          <option value="Gift">Gift</option>
           <option value="Other">Other</option>
         </Select>
         <TextArea label="Note" value={note} onChange={(e) => setNote(e.target.value)} />
@@ -140,7 +149,7 @@ export default function Main() {
               <tr key={income.id} className="divide-x-2 divide-black text-center">
                 <td className="p-3">{index + 1}</td>
                 <td className="p-3">{income.date}</td>
-                <td className="p-3">Rp {income.rp}</td>
+                <td className="p-3">{formatToRupiah(income.rp)}</td>
                 <td className="p-3">{income.category}</td>
                 <td className="p-3">{income.note}</td>
                 <td className="p-3">
