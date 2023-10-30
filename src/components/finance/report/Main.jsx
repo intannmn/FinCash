@@ -17,7 +17,10 @@ export default function Main() {
   useEffect(() => {
     fetch("https://653a4d94e3b530c8d9e976d9.mockapi.io/expense")
       .then((response) => response.json())
-      .then((data) => setExpenses(data))
+      .then((data) => {setExpenses(data);
+        const total = data.reduce((acc, expense) => acc + parseInt(expense.rp), 0);
+        setTotalExpense(total);
+      })
       .catch((error) => console.error("Error fetching expense data: " + error));
 
     fetch("https://653a4d94e3b530c8d9e976d9.mockapi.io/income")
@@ -31,18 +34,13 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    const total = expenses.reduce((acc, expense) => acc + parseInt(expense.rp), 0);
-    setTotalExpense(total);
-  }, [expenses]);
-
-  useEffect(() => {
     const newBalance = totalIncome - totalExpense;
     setBalance(newBalance);
+
     setexportIncomes(incomes.map((income, index) => [index + 1, income.date, income.rp, income.category, income.note]));
     setexportExpenses(expenses.map((expense, index) => [index + 1, expense.date, expense.rp, expense.category, expense.note]));
     setExportExcel([[totalIncome, totalExpense, balance], ...exportIncomes, ...exportExpenses]);
 
-    console.log(exportExcel);
   }, [incomes, expenses]);
 
   const handleExcelExport = () => {
