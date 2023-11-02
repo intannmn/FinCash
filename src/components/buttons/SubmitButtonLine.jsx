@@ -11,7 +11,9 @@ export default function SubmitButtonLine({ label, font, size, loading }) {
       } ${size === "sm-full" && "w-full rounded-sm py-1"} ${size === "md" && "rounded-md px-6 py-2"} ${
         size === "md-full" && "w-full rounded-md py-2"
       }  ${size === "lg" && "rounded-md px-12 py-3"} ${size === "lg-full" && "w-full rounded-md py-3"} ${
-        loading ? "bg-A5 border-A5 cursor-wait" : "border-A2 hover:bg-A4 text-A2 hover:border-A4 hover:text-black"
+        loading
+          ? "cursor-wait border-[#ECC10C]/60 bg-[#ECC10C]/60"
+          : "border-[#ECC10C] text-[#ECC10C] hover:border-[#ECC10C]/80 hover:bg-[#ECC10C]/80 hover:text-black"
       }`}
     >
       <span>{label}</span>

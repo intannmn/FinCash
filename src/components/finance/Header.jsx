@@ -11,19 +11,19 @@ export default function Header() {
 
   return (
     <header className="fixed left-0 top-0 h-28 w-full p-5">
-      <div className="flex h-full w-full items-center justify-between rounded-2xl border-2 border-black bg-white px-5">
+      <div className="flex h-full w-full items-center justify-between rounded-2xl border-2 border-black bg-[#0c661a] px-5">
         <section className="flex items-center gap-2">
           <Image src={user?.image} alt="Photo Profile" height={50} width={50} className="rounded-full" />
           <div>
-            <h2 className="text-lg font-semibold" title={user?.name}>
+            <h2 className="text-lg font-semibold text-white" title={user?.name}>
               {user?.name}
             </h2>
-            <p className="text-sm text-gray-500" title={user?.email}>
+            <p className="text-sm text-gray-200" title={user?.email}>
               {user?.email}
             </p>
           </div>
         </section>
-        <Link href={"/account"} className="hover:text-myGreenC">
+        <Link href={"/account"} className="text-white hover:text-[#ECC10C]">
           <AiFillSetting size={25} />
         </Link>
       </div>

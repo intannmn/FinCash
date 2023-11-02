@@ -72,9 +72,8 @@ export default function Register() {
   };
 
   return (
-    <main className="flex h-screen w-screen items-center justify-center bg-gradient-to-b from-myGreenA/80 to-white/50">
-      <div className="fixed -z-10 h-full w-full bg-dots-background bg-cover bg-fixed bg-no-repeat" />
-      <div className="w-[400px] space-y-5 rounded-lg border-2 border-black bg-myGreenA/50 p-5">
+    <main className="flex h-screen w-screen items-center justify-center">
+      <div className="w-[400px] space-y-5 rounded-lg p-5">
         <Image src={require("@/assets/logo/FinCash.svg")} alt="FinCash" quality={50} className="mx-auto" priority />
         <form onSubmit={handleSubmit} className="mx-auto w-full space-y-5">
           <InputText label="Username" value={username} onChange={(e) => setUsername(e.target.value)} />

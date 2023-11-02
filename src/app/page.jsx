@@ -5,8 +5,6 @@ import Footer from "@/components/landingpage/Footer";
 export default function LandingPage() {
   return (
     <>
-      <div className="fixed -z-10 h-screen w-screen bg-gradient-to-b from-myGreenA/80 to-white/50 bg-cover bg-fixed bg-no-repeat" />
-      <div className="fixed -z-[11] h-screen w-screen bg-dots-background bg-cover bg-fixed bg-no-repeat" />
       <Header />
       <Main />
       <Footer />

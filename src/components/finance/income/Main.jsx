@@ -132,10 +132,10 @@ export default function Main() {
         <SubmitButton label={editMode ? "Save" : "Submit"} font="semibold" size="md" loading={loading} />
       </form>
 
-      <div className="rounded-md border-2 border-black">
-        <table className="w-full divide-y-2 divide-black">
+      <div className="rounded-md border-2 border-[#ECC10C]">
+        <table className="w-full divide-y-2 divide-[#ECC10C]">
           <thead>
-            <tr className="divide-x-2 divide-black font-bold">
+            <tr className="divide-x-2 divide-[#ECC10C] font-bold">
               <th className="p-3">NO</th>
               <th className="p-3">DATE</th>
               <th className="p-3">RP</th>
@@ -146,7 +146,7 @@ export default function Main() {
           </thead>
           <tbody>
             {incomes.map((income, index) => (
-              <tr key={income.id} className="divide-x-2 divide-black text-center">
+              <tr key={income.id} className="divide-x-2 divide-[#ECC10C] text-center">
                 <td className="p-3">{index + 1}</td>
                 <td className="p-3">{income.date}</td>
                 <td className="p-3">{formatToRupiah(income.rp)}</td>
@@ -154,10 +154,10 @@ export default function Main() {
                 <td className="p-3">{income.note}</td>
                 <td className="p-3">
                   <div className="flex items-center justify-center">
-                    <button onClick={() => handleEditIncome(income)} className="mr-2 rounded-md bg-A3 px-4 py-2 text-white hover:bg-A4">
+                    <button onClick={() => handleEditIncome(income)} className="mr-2 rounded-md bg-[#ECC10C] px-4 py-2 hover:bg-[#ECC10C]/80">
                       Edit
                     </button>
-                    <button onClick={() => handleDeleteIncome(income.id)} className="rounded-md bg-C2 px-4 py-2 text-white hover:bg-C3">
+                    <button onClick={() => handleDeleteIncome(income.id)} className="rounded-md bg-[#ECC10C] px-4 py-2 hover:bg-[#ECC10C]/80">
                       Delete
                     </button>
                   </div>

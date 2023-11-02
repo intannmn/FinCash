@@ -17,7 +17,8 @@ export default function Main() {
   useEffect(() => {
     fetch("https://653a4d94e3b530c8d9e976d9.mockapi.io/expense")
       .then((response) => response.json())
-      .then((data) => {setExpenses(data);
+      .then((data) => {
+        setExpenses(data);
         const total = data.reduce((acc, expense) => acc + parseInt(expense.rp), 0);
         setTotalExpense(total);
       })
@@ -40,7 +41,6 @@ export default function Main() {
     setexportIncomes(incomes.map((income, index) => [index + 1, income.date, income.rp, income.category, income.note]));
     setexportExpenses(expenses.map((expense, index) => [index + 1, expense.date, expense.rp, expense.category, expense.note]));
     setExportExcel([[totalIncome, totalExpense, balance], ...exportIncomes, ...exportExpenses]);
-
   }, [incomes, expenses]);
 
   const handleExcelExport = () => {
@@ -63,17 +63,17 @@ export default function Main() {
   return (
     <main className="space-y-5">
       <section id="totalTable">
-        <div className="rounded-md border-2 border-black">
-          <table className="w-full divide-y-2 divide-black">
+        <div className="rounded-md border-2 border-[#ECC10C]">
+          <table className="w-full divide-y-2 divide-[#ECC10C]">
             <thead>
-              <tr className="divide-x-2 divide-black font-bold">
+              <tr className="divide-x-2 divide-[#ECC10C] font-bold">
                 <th className="p-3">INCOME</th>
                 <th className="p-3">EXPENSE</th>
                 <th className="p-3">BALANCE</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="divide-x-2 divide-black text-center">
+              <tr className="divide-x-2 divide-[#ECC10C] text-center">
                 <td className="p-3">{formatToRupiah(totalIncome)}</td>
                 <td className="p-3">{formatToRupiah(totalExpense)}</td>
                 <td className="p-3">{formatToRupiah(balance)}</td>
@@ -86,10 +86,10 @@ export default function Main() {
       <section className="space-y-5">
         <div className="flex items-center justify-center">
           <div id="incomeTable" className="grid w-full grid-cols-2 gap-5">
-            <div className="rounded-md border-2 border-black">
-              <table className="w-full divide-y-2 divide-black">
+            <div className="rounded-md border-2 border-[#ECC10C]">
+              <table className="w-full divide-y-2 divide-[#ECC10C]">
                 <thead>
-                  <tr className="divide-x-2 divide-black font-bold">
+                  <tr className="divide-x-2 divide-[#ECC10C] font-bold">
                     <th className="p-3">NO</th>
                     <th className="p-3">DATE</th>
                     <th className="p-3">RP</th>
@@ -99,7 +99,7 @@ export default function Main() {
                 </thead>
                 <tbody>
                   {incomes.map((income, index) => (
-                    <tr key={income.id} className="divide-x-2 divide-black text-center">
+                    <tr key={income.id} className="divide-x-2 divide-[#ECC10C] text-center">
                       <td className="p-3">{index + 1}</td>
                       <td className="p-3">{income.date}</td>
                       <td className="p-3">{formatToRupiah(income.rp)}</td>
@@ -111,10 +111,10 @@ export default function Main() {
               </table>
             </div>
 
-            <div id="expenseTable" className="rounded-md border-2 border-black">
-              <table className="w-full border-collapse divide-y-2 divide-black">
+            <div id="expenseTable" className="rounded-md border-2 border-[#ECC10C]">
+              <table className="w-full border-collapse divide-y-2 divide-[#ECC10C]">
                 <thead>
-                  <tr className="divide-x-2 divide-black font-bold">
+                  <tr className="divide-x-2 divide-[#ECC10C] font-bold">
                     <th className="p-3">NO</th>
                     <th className="p-3">DATE</th>
                     <th className="p-3">RP</th>
@@ -124,7 +124,7 @@ export default function Main() {
                 </thead>
                 <tbody>
                   {expenses.map((expense, index) => (
-                    <tr key={expense.id} className="divide-x-2 divide-black text-center">
+                    <tr key={expense.id} className="divide-x-2 divide-[#ECC10C] text-center">
                       <td className="p-3">{index + 1}</td>
                       <td className="p-3">{expense.date}</td>
                       <td className="p-3">{formatToRupiah(expense.rp)}</td>

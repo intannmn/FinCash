@@ -48,24 +48,24 @@ export default function Main() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <div className="grid w-full grid-cols-2 gap-5">
-        <div className="h-fit w-full rounded-md bg-white p-4">
+        <div className="h-fit w-full p-4">
           <h2 className="mb-2 text-lg font-semibold">Expense Chart</h2>
           <ExpenseDoughnut />
         </div>
         <div className="flex h-full w-full flex-col gap-5">
-          <div className="h-full w-full rounded-md bg-white p-4">
+          <div className="h-full w-full rounded-md bg-[#ECC10C] p-4">
             <h2 className="mb-2 text-lg font-semibold">Total Income</h2>
             <p className="text-2xl font-bold">{formatToRupiah(totalIncome)}</p>
           </div>
 
-          <div className="h-full w-full rounded-md bg-white p-4">
+          <div className="h-full w-full rounded-md bg-[#ECC10C] p-4">
             <h2 className="mb-2 text-lg font-semibold">Total Expense</h2>
             <p className="text-2xl font-bold">{formatToRupiah(totalExpense)}</p>
           </div>
 
-          <div className="h-full w-full rounded-md bg-white p-4">
+          <div className="h-full w-full rounded-md bg-[#ECC10C] p-4">
             <h2 className="mb-2 text-lg font-semibold">Saldo</h2>
             <p className="text-2xl font-bold">{formatToRupiah(saldo)}</p>
           </div>

@@ -49,7 +49,7 @@ export default function OpenAIAss() {
       {!isOpen && (
         <section
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-5 right-5 z-10 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-A3 text-white hover:bg-A4"
+          className="fixed bottom-5 right-5 z-10 flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-[#0c661a] text-white hover:bg-A3"
         >
           <RiCustomerService2Fill size={30} />
         </section>

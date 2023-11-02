@@ -7,10 +7,12 @@ export default function SubmitButton({ label, font, size, loading }) {
       type="submit"
       disabled={loading}
       className={`flex items-center justify-center gap-1 rounded-md ${font === "semibold" && "font-semibold"} ${font === "bold" && "font-bold"} ${
-        size === "sm" && "px-3 py-1 rounded-sm"
-      } ${size === "sm-full" && "w-full py-1 rounded-sm"} ${size === "md" && "px-6 py-2 rounded-md"} ${size === "md-full" && "w-full py-2 rounded-md"}  ${
-        size === "lg" && "px-12 py-3 rounded-md"
-      } ${size === "lg-full" && "w-full py-3 rounded-md"} ${loading ? "bg-A5 cursor-wait" : "bg-A3 hover:bg-A4"}`}
+        size === "sm" && "rounded-sm px-3 py-1"
+      } ${size === "sm-full" && "w-full rounded-sm py-1"} ${size === "md" && "rounded-md px-6 py-2"} ${
+        size === "md-full" && "w-full rounded-md py-2"
+      }  ${size === "lg" && "rounded-md px-12 py-3"} ${size === "lg-full" && "w-full rounded-md py-3"} ${
+        loading ? "cursor-wait bg-[#ECC10C]/60" : "bg-[#ECC10C] hover:bg-[#ECC10C]/80"
+      }`}
     >
       <span>{label}</span>
       {loading && <Image src={loadingAnimation} alt="Loading..." width={20} height={0} quality={50} loading="eager" className="stroke-black" />}
