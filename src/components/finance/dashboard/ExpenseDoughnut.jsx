@@ -12,7 +12,7 @@ function ExpenseDoughnut() {
     datasets: [
       {
         data: [],
-        backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)", "rgba(255, 206, 86, 0.6)", "rgba(75, 192, 192, 0.6)"],
+        backgroundColor: ["rgba(12, 102, 26, 1.0)", "rgba(0, 74, 173, 1.0)", "rgba(236, 193, 12, 1.0)", "rgba(255, 49, 49, 1.0)"],
       },
     ],
   });

@@ -66,7 +66,7 @@ export default function Main() {
           </div>
 
           <div className="h-full w-full rounded-md bg-[#ECC10C] p-4">
-            <h2 className="mb-2 text-lg font-semibold">Saldo</h2>
+            <h2 className="mb-2 text-lg font-semibold">Balance</h2>
             <p className="text-2xl font-bold">{formatToRupiah(saldo)}</p>
           </div>
         </div>
